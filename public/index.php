@@ -4,20 +4,18 @@ declare(strict_types=1);
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
-use DI\ContainerBuilder;
+use DI\Container;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$containerBuilder = new ContainerBuilder();
-$settings = require __DIR__ . '/../app/settings.php';
-$settings($containerBuilder);
-
-// Build PHP-DI Container instance
-$container = $containerBuilder->build();
-
+$container = new Container();
+$container->set('db', function () {
+    $settings = [...];
+    return new MyService($settings);
+});
 AppFactory::setContainer($container);
 $app = AppFactory::create();
-
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
 $routes = require __DIR__ . '/../config/routes.php';
 $routes($app);
 

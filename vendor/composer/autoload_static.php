@@ -9,6 +9,7 @@ class ComposerStaticInitc96217440b7b46fbc1b5af2fad947c27
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         'cf97c57bfe0f23854afd2f3818abb7a0' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/create_uploaded_file.php',
         '9bf37a3d0dad93e29cb4e1b1bfab04e9' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_headers_from_sapi.php',
@@ -18,6 +19,7 @@ class ComposerStaticInitc96217440b7b46fbc1b5af2fad947c27
         '0b0974a5566a1077e4f2e111341112c1' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/normalize_server.php',
         '1ca3bc274755662169f9629d5412a1da' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/normalize_uploaded_files.php',
         '40360c0b9b437e69bcbb7f1349ce029e' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/parse_cookie_header.php',
+        'b33e3d135e5d9e47d845c576147bda89' => __DIR__ . '/..' . '/php-di/php-di/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -27,6 +29,9 @@ class ComposerStaticInitc96217440b7b46fbc1b5af2fad947c27
         ),
         'S' => 
         array (
+            'Symfony\\Polyfill\\Util\\' => 22,
+            'Symfony\\Polyfill\\Php56\\' => 23,
+            'SuperClosure\\' => 13,
             'Slim\\Tests\\' => 11,
             'Slim\\Psr7\\' => 10,
             'Slim\\' => 5,
@@ -36,11 +41,17 @@ class ComposerStaticInitc96217440b7b46fbc1b5af2fad947c27
             'Psr\\Http\\Server\\' => 16,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+            'PhpParser\\' => 10,
+            'PhpDocReader\\' => 13,
         ),
         'N' => 
         array (
             'Nyholm\\Psr7\\' => 12,
             'Nyholm\\Psr7Server\\' => 18,
+        ),
+        'I' => 
+        array (
+            'Invoker\\' => 8,
         ),
         'H' => 
         array (
@@ -56,12 +67,28 @@ class ComposerStaticInitc96217440b7b46fbc1b5af2fad947c27
             'Fig\\Http\\Message\\' => 17,
             'FastRoute\\' => 10,
         ),
+        'D' => 
+        array (
+            'DI\\' => 3,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Zend\\Diactoros\\' => 
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-diactoros/src',
+        ),
+        'Symfony\\Polyfill\\Util\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-util',
+        ),
+        'Symfony\\Polyfill\\Php56\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php56',
+        ),
+        'SuperClosure\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jeremeamia/superclosure/src',
         ),
         'Slim\\Tests\\' => 
         array (
@@ -89,6 +116,14 @@ class ComposerStaticInitc96217440b7b46fbc1b5af2fad947c27
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'PhpParser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'PhpDocReader\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/phpdoc-reader/src/PhpDocReader',
+        ),
         'Nyholm\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/nyholm/psr7/src',
@@ -96,6 +131,10 @@ class ComposerStaticInitc96217440b7b46fbc1b5af2fad947c27
         'Nyholm\\Psr7Server\\' => 
         array (
             0 => __DIR__ . '/..' . '/nyholm/psr7-server/src',
+        ),
+        'Invoker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/invoker/src',
         ),
         'Http\\Message\\' => 
         array (
@@ -116,6 +155,10 @@ class ComposerStaticInitc96217440b7b46fbc1b5af2fad947c27
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
+        'DI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/php-di/src',
         ),
     );
 
