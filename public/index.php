@@ -19,7 +19,8 @@ $dependencies($container);
 
 AppFactory::setContainer($container);
 $app = AppFactory::create();
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+$app->addErrorMiddleware($config['displayErrorDetails'], true, true);
+
 $routes = require __DIR__ . '/../app/routes.php';
 $routes($app);
 
