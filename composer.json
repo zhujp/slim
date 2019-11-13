@@ -9,5 +9,11 @@
         "zendframework/zend-diactoros": "^2.1",
         "php-di/php-di": "^6.0",
         "illuminate/database": "^6.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        },
+        "files" : ["app/helpers.php"]
     }
 }

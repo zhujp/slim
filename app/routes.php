@@ -13,12 +13,7 @@ return function (App $app) {
         $response->getBody()->write('Hello world!');
         return $response;
     });
-    $app->get('/user/name', function (Request $request, Response $response) {
-        $db = $this->get('db');
-        var_dump($db);exit;
-        $response->getBody()->write('Hello world!');
-        return $response;
-    });
+    $app->get('/user/{name}', \app\controllers\UserController::class . ':index');
     $app->group('/users', function (Group $group) {
         $group->get('', ListUsersAction::class);
         $group->get('/{id}', ViewUserAction::class);

@@ -21,4 +21,5 @@ return array(
     '1ca3bc274755662169f9629d5412a1da' => $vendorDir . '/zendframework/zend-diactoros/src/functions/normalize_uploaded_files.php',
     '40360c0b9b437e69bcbb7f1349ce029e' => $vendorDir . '/zendframework/zend-diactoros/src/functions/parse_cookie_header.php',
     'b33e3d135e5d9e47d845c576147bda89' => $vendorDir . '/php-di/php-di/src/functions.php',
+    'e320f53bb3364b7ed572ecc5ef33c5cf' => $baseDir . '/app/helpers.php',
 );
