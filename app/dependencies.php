@@ -5,6 +5,7 @@ use DI\Container;
 use app\controllers\Controller;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use app\common\Error;
 
 return function (Container $container) {
     $container->set('db', function () use($container) {
@@ -17,9 +18,7 @@ return function (Container $container) {
         return $capsule;
     });
 
-    $container->set(Controller::class, function () use($container) {
-        $request = $container->get('request');
-        $response = $container->get('response');
-        return new Controller($request,$response);
+    $container->set(Error::class, function (){
+        return new Error('json',null);
     });
 };
