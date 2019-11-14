@@ -20,21 +20,18 @@ class JsonResponder implements JsonSerializable
     /**
      * @var ActionError|null
      */
-    private $error;
+    private $message;
 
     /**
-     * @param int                   $statusCode
      * @param array|object|null     $data
+     * @param int                   $statusCode
      * @param ActionError|null      $error
      */
-    public function __construct(
-        int $statusCode = 200,
-        $data = null,
-        ?ErrorResponder $error = null
-    ) {
+    public function __construct(int $statusCode = 200, $data = null, ?string $message = null) 
+    {
         $this->statusCode = $statusCode;
         $this->data = $data;
-        $this->error = $error;
+        $this->message = $message;
     }
 
     /**
@@ -56,9 +53,9 @@ class JsonResponder implements JsonSerializable
     /**
      * @return ActionError|null
      */
-    public function getError(): ?ErrorResponder
+    public function getMessage(): ?string
     {
-        return $this->error;
+        return $this->message;
     }
 
     /**
@@ -70,10 +67,11 @@ class JsonResponder implements JsonSerializable
             'statusCode' => $this->statusCode,
         ];
 
+
         if ($this->data !== null) {
             $payload['data'] = $this->data;
-        } elseif ($this->error !== null) {
-            $payload['error'] = $this->error;
+        } elseif ($this->message !== null) {
+            $payload['message'] = $this->message;
         }
 
         return $payload;
