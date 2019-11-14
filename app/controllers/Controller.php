@@ -7,6 +7,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Container\ContainerInterface;
 use app\responder\JsonResponder;
+use Slim\Exception\HttpBadRequestException;
 
 class Controller
 {
@@ -24,6 +25,21 @@ class Controller
        $this->response = $this->container->get(ResponseFactoryInterface::class)->createResponse();
     }
     
+
+    /**
+     * @return array|object
+     * @throws HttpBadRequestException
+     */
+    protected function getFormData()
+    {
+        $input = json_decode(file_get_contents('php://input'),true);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new HttpBadRequestException($this->request, 'Malformed JSON input.');
+        }
+
+        return $input;
+    }
 
     /**
      * @param  array|object|null $data

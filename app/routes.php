@@ -13,9 +13,12 @@ return function (App $app) {
         $response->getBody()->write('Hello world!');
         return $response;
     });
-    $app->get('/user/{name}', \app\controllers\UserController::class . ':index');
+    
     $app->group('/users', function (Group $group) {
-        $group->get('', ListUsersAction::class);
-        $group->get('/{id}', ViewUserAction::class);
+        $group->get('', \app\controllers\UserController::class . ':lists');
+        $group->get('/{id:[0-9]+}', \app\controllers\UserController::class . ':index');
+        $group->post('', \app\controllers\UserController::class . ':create');
+        $group->post('/{id:[0-9]+}', \app\controllers\UserController::class . ':update');
+        $group->delete('/{id:[0-9]+}', \app\controllers\UserController::class . ':index');
     });
 };
