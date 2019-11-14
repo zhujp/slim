@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace app\common;
+namespace app\responder;
 
 use JsonSerializable;
 
-class Payload implements JsonSerializable
+class JsonResponder implements JsonSerializable
 {
     /**
      * @var int
@@ -30,7 +30,7 @@ class Payload implements JsonSerializable
     public function __construct(
         int $statusCode = 200,
         $data = null,
-        ?Error $error = null
+        ?ErrorResponder $error = null
     ) {
         $this->statusCode = $statusCode;
         $this->data = $data;
@@ -56,7 +56,7 @@ class Payload implements JsonSerializable
     /**
      * @return ActionError|null
      */
-    public function getError(): ?Error
+    public function getError(): ?ErrorResponder
     {
         return $this->error;
     }

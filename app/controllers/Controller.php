@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpNotFoundException;
 use Psr\Container\ContainerInterface;
-use app\common\Payload;
+use app\responder\JsonResponder;
 
 class Controller
 {
@@ -33,19 +33,19 @@ class Controller
      * @return Response
      */
     // protected function respondWithData(Response $response, $data = null): Response
-    protected function respondWithData($data = null): Response
+    protected function respondWithData($data = null, int $statusCode = 200): Response
     {
-        $payload = new Payload(200, $data);
-        return $this->respond($payload);
+        $responder = new JsonResponder($statusCode, $data);
+        return $this->respond($responder);
     }
 
     /**
      * @param ActionPayload $payload
      * @return Response
      */
-    protected function respond(Payload $payload): Response
+    protected function respond(JsonResponder $responder): Response
     {
-        $json = json_encode($payload, JSON_PRETTY_PRINT);
+        $json = json_encode($responder, JSON_PRETTY_PRINT);
         $this->response->getBody()->write($json);
         return $this->response->withHeader('Content-Type', 'application/json');
     }

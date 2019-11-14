@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace app\common;
+namespace app\responder;
 
 use JsonSerializable;
 
-class Error implements JsonSerializable
+class ErrorResponder implements JsonSerializable
 {
     public const BAD_REQUEST = 'BAD_REQUEST';
     public const INSUFFICIENT_PRIVILEGES = 'INSUFFICIENT_PRIVILEGES';
