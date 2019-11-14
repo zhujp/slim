@@ -5,6 +5,7 @@ namespace app\controllers;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpNotFoundException;
 use Psr\Container\ContainerInterface;
@@ -17,52 +18,23 @@ class Controller
      */
     protected $response;
 
-    // protected $container;
-    //默认以容器作为参数传入构造方法
+    protected $container;
+
     // constructor receives container instance
-    // public function __construct(ContainerInterface $container) {
-    //    $this->container = $container;
-    //    echo "<pre>";
-    //    var_dump($this->container);exit;
-    // }
-    // 
+    public function __construct(ContainerInterface $container) {
 
-    /**
-     * @return array|object
-     * @throws HttpBadRequestException
-     */
-    protected function getFormData()
-    {
-        $input = json_decode(file_get_contents('php://input'));
-
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new HttpBadRequestException($this->request, 'Malformed JSON input.');
-        }
-
-        return $input;
+       $this->container = $container;
+       $this->response = $this->container->get(ResponseFactoryInterface::class)->createResponse();
     }
-
-    /**
-     * @param  string $name
-     * @return mixed
-     * @throws HttpBadRequestException
-     */
-    protected function resolveArg(string $name)
-    {
-        if (!isset($this->args[$name])) {
-            throw new HttpBadRequestException($this->request, "Could not resolve argument `{$name}`.");
-        }
-
-        return $this->args[$name];
-    }
+    
 
     /**
      * @param  array|object|null $data
      * @return Response
      */
-    protected function respondWithData(Response $response, $data = null): Response
+    // protected function respondWithData(Response $response, $data = null): Response
+    protected function respondWithData($data = null): Response
     {
-        $this->response = $response;
         $payload = new Payload(200, $data);
         return $this->respond($payload);
     }

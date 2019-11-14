@@ -2,22 +2,24 @@
 declare(strict_types=1);
 
 use Slim\Factory\AppFactory;
-use DI\Container;
+use DI\ContainerBuilder;
 
 require __DIR__ . '/../vendor/autoload.php';
-$config = require __DIR__ . '/../config/config.php';
-$container = new Container();
 
-//Set up config
-$container->set('config',$config);
+$containerBuilder = new ContainerBuilder();
 
 // Set up dependencies
 $dependencies = require __DIR__ . '/../app/dependencies.php';
-$dependencies($container);
+$dependencies($containerBuilder);
 
+// Build PHP-DI Container instance
+$container = $containerBuilder->build();
+
+// Instantiate the app
 AppFactory::setContainer($container);
+
 $app = AppFactory::create();
-$app->addErrorMiddleware($config['displayErrorDetails'], true, true);
+$app->addErrorMiddleware($container->get('config')['displayErrorDetails'], true, true);
 
 $routes = require __DIR__ . '/../app/routes.php';
 $routes($app);
