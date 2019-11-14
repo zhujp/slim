@@ -7,7 +7,10 @@ use Symfony\Component\Console\Application;
 use app\console\User;
 
 $application = new Application();
+$commands = (require __DIR__ . '/config/command.php');
 
-$application->add(new User());
+foreach ($commands as $command) {
+    $application->add(new $command);
+}
 
 $application->run();

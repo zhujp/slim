@@ -1,5 +1,5 @@
 <?php 
 
 return [
-    'test' => ''
+    \app\console\User::class,
 ];
