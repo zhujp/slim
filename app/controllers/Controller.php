@@ -17,11 +17,14 @@ class Controller
     protected $response;
 
     protected $container;
+    
+    protected $db;
 
     // constructor receives container instance
     public function __construct(ContainerInterface $container) {
 
        $this->container = $container;
+       $this->db = $this->container->get('db');
        $this->response = $this->container->get(ResponseFactoryInterface::class)->createResponse();
     }
     
@@ -46,9 +49,9 @@ class Controller
      * @return Response
      */
     // protected function respondWithData(Response $response, $data = null): Response
-    protected function respondWithData($data = null, int $statusCode = 200): Response
+    protected function respondWithData($data = null, int $statusCode = 200, ?string $message=null): Response
     {
-        $responder = new JsonResponder($statusCode, $data);
+        $responder = new JsonResponder($statusCode, $data, $message);
         return $this->respond($responder);
     }
 

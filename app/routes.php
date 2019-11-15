@@ -19,6 +19,6 @@ return function (App $app) {
         $group->get('/{id:[0-9]+}', \app\controllers\UserController::class . ':index');
         $group->post('', \app\controllers\UserController::class . ':create');
         $group->post('/{id:[0-9]+}', \app\controllers\UserController::class . ':update');
-        $group->delete('/{id:[0-9]+}', \app\controllers\UserController::class . ':index');
+        $group->post('/delete/{id:[0-9]+}', \app\controllers\UserController::class . ':destory');
     });
 };
