@@ -18,14 +18,14 @@ class JsonResponder implements JsonSerializable
     private $data;
 
     /**
-     * @var ActionError|null
+     * @var null
      */
     private $message;
 
     /**
      * @param array|object|null     $data
      * @param int                   $statusCode
-     * @param ActionError|null      $error
+     * @param null                  $message
      */
     public function __construct(int $statusCode = 200, $data = null, ?string $message = null) 
     {
@@ -67,10 +67,11 @@ class JsonResponder implements JsonSerializable
             'statusCode' => $this->statusCode,
         ];
 
-
         if ($this->data !== null) {
             $payload['data'] = $this->data;
-        } elseif ($this->message !== null) {
+        }
+
+        if ($this->message !== null) {
             $payload['message'] = $this->message;
         }
 
