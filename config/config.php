@@ -3,10 +3,10 @@ return [
     'displayErrorDetails' => true,
     'db' => [
         'driver' => 'mysql',
-        'host' => '127.0.0.1',
+        'host' => 'docker.for.mac.host.internal',
         'database' => 'slim',
         'username' => 'root',
-        'password' => '123456',
+        'password' => '34130707',
         'charset'   => 'utf8mb4',
         'collation' => 'utf8mb4_general_ci',
         'prefix'    => '',
